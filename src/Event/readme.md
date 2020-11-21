@@ -1,5 +1,26 @@
 # 事件
 
+
+## mousedown 事件 与 input focus 事件存在的问题
+
+**场景**
+> 实现一个 自由伸缩的 dialog
+
+**问题**
+> 给 dialog 这个 dom 对象绑定 mousedown 事件之后，dialog 的子元素的 input focus 事件无法触发
+
+**原理**
+> 对于 focus 事件， 是按照 mousedown -> focus -> mouseup -> click 顺序。 所以在 mousedown 的时 候是获取不到 focus 事件的
+
+**解决方案**
+  ```js
+  if(oEvent.target.nodeName.toLowerCase() === 'input'){ //如果目标元素是input则跳出滑动事件
+               oEvent.target.focus()
+               return;
+           }
+
+  ```
+
 ## 阻止默认行为 和 阻止事件冒泡 
 
 ```js
