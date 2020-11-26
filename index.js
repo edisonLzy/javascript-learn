@@ -1,11 +1,40 @@
-// 捕获阶段 
-const div = document.querySelector('#div');
-const btn = document.querySelector('#btn');
+function $(selector){
+    return document.querySelector(selector)
+}
+// 捕获阶段
+const div = $("#div");
+const btn = $("#btn");
+const textarea = $("#selcted");
 
-div.addEventListener('click',()=>{
-     console.log('div');
-},false)
+textarea.addEventListener('select',e=>{
+    console.log(e);
+})
 
-btn.addEventListener('click',()=>{
-    console.log('btn');
-},true)
+div.addEventListener(
+  "click",
+  (e) => {
+    console.log(JSON.parse(JSON.stringify(e)));
+    e.preventDefault();
+    console.log(e);
+    console.log("div", e.eventPhase); //3 表示事件发生在冒泡阶段
+  },
+  false
+);
+
+btn.addEventListener(
+  "click",
+  function (e) {
+    console.log(this);
+    // e.stopImmediatePropagation()
+    console.log("btn", e.eventPhase); //2 表示事件发生在 处于目标阶段
+  },
+  true
+);
+
+// document.body.addEventListener(
+//   "click",
+//   (event) => {
+//     console.log(event.eventPhase); // 1 表示事件发生在 处于冒泡阶段
+//   },
+//   true
+// );
