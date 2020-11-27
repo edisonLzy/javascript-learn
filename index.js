@@ -38,3 +38,9 @@ btn.addEventListener(
 //   },
 //   true
 // );
+
+
+window.addEventListener('unload',()=>{
+    console.log('page is unloaded');
+})
+console.log('run')

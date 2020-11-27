@@ -283,15 +283,129 @@ const EventUtil = {
 
 ## 事件类型
 
+### 用户界面时间 UI 事件
 
-### 用户界面时间 UI事件
+**onload**
+
+1. window
+
+2. img
+
+   2.1 img 元素 的`onload事件`，需要在 src 属性赋值前 注册.
+
+   2.2 img 元素 的`src属性`一经指定 就会下载 src 引用的资源
+
+```js
+window.addEventListener("load", () => {
+  let image = document.createElement("img");
+  image.addEventListener("load", (event) => {
+    console.log(event.target.src);
+  });
+  document.body.appendChild(image);
+  image.src = "smile.gif";
+});
+```
+
+2.3 image 构造函数 属于 DOM0
+
+```js
+window.addEventListener("load", () => {
+  let image = new Image();
+  image.addEventListener("load", (event) => {
+    console.log("Image loaded!");
+  });
+  image.src = "smile.gif";
+});
+```
+
+3. script
+
+> 元素会在 JavaScript 文件 `加载完成并执行完成 后触发load事件`，从而可以动态检查
+
+```js
+window.addEventListener("load", () => {
+  let script = document.createElement("script");
+  script.addEventListener("load", (event) => {
+    console.log("Loaded");
+  });
+  script.src = "example.js";
+  document.body.appendChild(script);
+});
+```
+
+4. link
+
+> `IE , Opera`支持<link> 元素触发 load 事件。行为和 script 表现一致
+
+**resize**
+
+1.1 `避免`在这个事件处理程序中执行过多计算。否则可能由于执行过于频繁而导致浏览器响应明确变慢。
+
+1.2 浏览器窗口在最大化和最小化时也会触发 resize 事件。
+
+**scroll**
+
+> 兼容获取 滚动距离
+
+```js
+window.addEventListener("scroll", (event) => {
+  if (document.compatMode == "CSS1Compat") {
+    console.log(document.documentElement.scrollTop);
+  } else {
+    console.log(document.body.scrollTop);
+  }
+});
+```
+
+### 焦点事件
+
+> 1011
+
+# todo
+
+- [] document.compatMode
+
+> 表明当前文档的渲染模式是 `怪异模式/混杂模式(Quirks mode)` 还是标准模式。
+
+BackCompat === 怪异模式/混杂模式
+CSS1Compat === 标准模式
+
+```js
+// 一个准确获取网页客户区的宽高、滚动条宽高、滚动条Left和Top的代码
+if (document.compatMode == "BackCompat") {
+  cWidth = document.body.clientWidth;
+  cHeight = document.body.clientHeight;
+  sWidth = document.body.scrollWidth;
+  sHeight = document.body.scrollHeight;
+  sLeft = document.body.scrollLeft;
+  sTop = document.body.scrollTop;
+} else {
+  //document.compatMode == "CSS1Compat"
+  cWidth = document.documentElement.clientWidth;
+  cHeight = document.documentElement.clientHeight;
+  sWidth = document.documentElement.scrollWidth;
+  sHeight = document.documentElement.scrollHeight;
+  sLeft =
+    document.documentElement.scrollLeft == 0
+      ? document.body.scrollLeft
+      : document.documentElement.scrollLeft;
+  sTop =
+    document.documentElement.scrollTop == 0
+      ? document.body.scrollTop
+      : document.documentElement.scrollTop;
+}
+```
+
+- [] 什么是 "CSS1Compat"
 
 # get
 
-1. frameset 
+1. frameset
 
 > https://www.w3school.com.cn/tags/tag_frameset.asp
 
-2. 选中 textarea 或者 input的 选中事件 select
+2. 选中 textarea 或者 input 的 选中事件 select
 
 3. window.getSelection().toString() 获取选中的文本信息
+
+4. document.documentElement === html
