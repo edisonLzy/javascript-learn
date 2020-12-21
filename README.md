@@ -123,6 +123,18 @@ btn.addEventListener(
 // btn div
 ```
 
+**不会事件冒泡的事件**
+
+> https://zhuanlan.zhihu.com/p/164844013
+
+```js
+1. mouseleave/mouseenter
+2. Media 事件(音视频的play事件等)
+3. blur / focus 事件
+4. scroll事件
+
+
+```
 ### IE 事件处理程序
 
 > IE 的事件处理程序 都注册到 冒泡阶段
