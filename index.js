@@ -1,46 +1,26 @@
-function $(selector){
-    return document.querySelector(selector)
-}
-// 捕获阶段
-const div = $("#div");
-const btn = $("#btn");
-const textarea = $("#selcted");
+document.getElementById("button").addEventListener("click", function () {
+  // 记录任务开始时间
+  let now = Date.now();
+  // 插入一万条数据
+  const total = 10000;
+  // 获取容器
+  let ul = document.getElementById("container");
+  // 将数据插入容器中
+  for (let i = 0; i < total; i++) {
+    let li = document.createElement("li");
+    li.innerText = ~~(Math.random() * total);
+    ul.appendChild(li);
+  }
+  console.log("JS运行时间：", Date.now() - now);
 
-textarea.addEventListener('select',e=>{
-    console.log(e);
-})
+  Promise.resolve("hhaha").then((v) => {
+    console.log(v);
+    alert(1);
+  });
+  setTimeout(() => {
+    console.log("总运行时间：", Date.now() - now);
+  }, 0);
 
-div.addEventListener(
-  "click",
-  (e) => {
-    console.log(JSON.parse(JSON.stringify(e)));
-    e.preventDefault();
-    console.log(e);
-    console.log("div", e.eventPhase); //3 表示事件发生在冒泡阶段
-  },
-  false
-);
-
-btn.addEventListener(
-  "click",
-  function (e) {
-    console.log(this);
-    // e.stopImmediatePropagation()
-    console.log("btn", e.eventPhase); //2 表示事件发生在 处于目标阶段
-  },
-  true
-);
-
-// document.body.addEventListener(
-//   "click",
-//   (event) => {
-//     console.log(event.eventPhase); // 1 表示事件发生在 处于冒泡阶段
-//   },
-//   true
-// );
-
-
-window.addEventListener('unload',()=>{
-    console.log('page is unloaded');
-})
-console.log('run')
+  // print JS运行时间：38
+  // print 总运行时间：957
+});

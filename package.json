@@ -1,0 +1,20 @@
+{
+  "name": "javascript-learn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx parcel ./public/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edisonLzy/javascript-learn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edisonLzy/javascript-learn/issues"
+  },
+  "homepage": "https://github.com/edisonLzy/javascript-learn#readme"
+}
