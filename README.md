@@ -373,6 +373,9 @@ window.addEventListener("scroll", (event) => {
 
 > 1011
 
+## 脚本触发事件
+> https://developer.mozilla.org/zh-CN/docs/Web/API/Event
+
 # todo
 
 - [] document.compatMode
