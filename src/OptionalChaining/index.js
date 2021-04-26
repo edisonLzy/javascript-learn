@@ -1,6 +1,7 @@
-let customer = {
-    name: "Carl",
-    details: { age: 82 }
-  };
-  let customerCity = customer?.city ?? "暗之城";
-  console.log(customerCity); // “暗之城”
+const left = undefined;
+
+const right = ()=>{
+  console.log('run');
+}
+
+const op = left ?? right();
