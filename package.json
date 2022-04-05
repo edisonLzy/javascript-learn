@@ -1,0 +1,26 @@
+{
+  "name": "javascript-learn",
+  "version": "1.0.0",
+  "description": "## [[scopes]]",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edisonLzy/javascript-learn.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edisonLzy/javascript-learn/issues"
+  },
+  "homepage": "https://github.com/edisonLzy/javascript-learn#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.0"
+  },
+  "dependencies": {
+    "async-pool": "^0.2.6"
+  }
+}
